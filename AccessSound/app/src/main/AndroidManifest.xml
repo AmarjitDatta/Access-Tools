@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="accessible.com.accesssound">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MeasureSoundActivity"
+            android:label="@string/title_activity_measure_sound"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name=".MainActivity"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ListSavedMeasurementsActivity"
+            android:label="@string/title_activity_list_saved_measurements"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name=".MainActivity"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ShowSoundMeasurementResult"
+            android:label="@string/title_activity_show_sound_measurement_result"
+            android:parentActivityName=".MeasureSoundActivity">
+            <meta-data
+                android:name=".MeasureSoundActivity"
+                android:value=".MeasureSoundActivity" />
+        </activity>
+        <activity
+            android:name=".LoadOldMeasurement"
+            android:label="@string/title_activity_load_old_measurement"
+            android:parentActivityName=".ListSavedMeasurementsActivity">
+            <meta-data
+                android:name=".ListSavedMeasurementsActivity"
+                android:value=".ListSavedMeasurementsActivity" />
+        </activity>
+    </application>
+
+</manifest>
