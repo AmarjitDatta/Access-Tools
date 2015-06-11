@@ -15,7 +15,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import accessible.com.accessibilitysound.R;
+import accessible.com.accesssound.R;
 
 public class DataAdapter extends BaseAdapter {
     Context mContext;

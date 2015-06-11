@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Accessibility Sound</string>
+    <string name="app_name">Access Sound</string>
 
     <!--Menu button levels-->
     <string name="homeMenuBtnLabel">Home</string>
