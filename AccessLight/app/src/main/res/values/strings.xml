@@ -1,6 +1,26 @@
 <resources>
     <string name="app_name">Access Light</string>
 
-    <string name="hello_world">Hello world!</string>
+    <!--Menu button levels-->
+    <string name="homeMenuBtnLabel">Home</string>
+    <string name="showSavedLogsMenuBtnLabel">Logs</string>
+    <string name="measureLightMenuBtnLabel">Measure</string>
+
+    <!--Button levels-->
+    <string name="measureLightButtonLabel">Measure Light Level</string>
+    <string name="measureButtonLabel">Measure</string>
+    <string name="tryAgainButtonLabel">Try Again</string>
+    <string name="saveResultButton">Save Result</string>
+    <string name="lightLogsButtonLabel">Saved Logs</string>
+
+    <!--Activity page titles-->
+    <string name="title_activity_measure_light">Measure Light</string>
+    <string name="title_activity_list_saved_measurements">Saved Measurements</string>
+    <string name="title_activity_show_light_measurement_result">Result</string>
+
+    <!--Others-->
+    <string name="soundMeasurementLogs">Saved Logs</string>
     <string name="action_settings">Settings</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

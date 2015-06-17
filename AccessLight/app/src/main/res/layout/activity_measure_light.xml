@@ -1,0 +1,64 @@
+<!--
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="accessible.com.accessibilitylight.MeasureLightActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/measureButtonLabel"
+        android:id="@+id/measureRoomLightLevel"
+        android:onClick="measureLightLevel"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/abc_text_size_large_material" />
+
+</RelativeLayout>
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDisplay"
+
+        />
+    <ProgressBar
+        android:id="@+id/lightmeter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="80dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        android:progress="0"
+        />
+    <TextView
+        android:id="@+id/max"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:id="@+id/reading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        />
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:layout_y="249dp"
+        android:textSize="30dp"
+        android:onClick="onButtonDown"
+        android:id="@+id/bStart"/>
+
+</LinearLayout>

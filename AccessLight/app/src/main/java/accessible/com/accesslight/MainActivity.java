@@ -1,10 +1,11 @@
 package accessible.com.accesslight;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.view.View;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -29,11 +30,29 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.homeMenuBtn) {
             return true;
         }
-
+        else if (id == R.id.showSavedLogsMenuBtn) {
+            Intent listSavedMeasurementsActivityIntent = new Intent(this, ListSavedMeasurementsActivity.class);
+            startActivity(listSavedMeasurementsActivityIntent);
+            return true;
+        }
+        else if (id == R.id.measureLightMenuBtn) {
+            Intent measureSoundActivityIntent = new Intent(this, MeasureLightActivity.class);
+            startActivity(measureSoundActivityIntent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void openMeasureLightActivity(View view) {
+        Intent measureLightActivityIntent = new Intent(this, MeasureLightActivity.class);
+        startActivity(measureLightActivityIntent);
+    }
+
+    public void listSavedMeasurements(View view) {
+        Intent listSavedMeasurementsActivityIntent = new Intent(this, ListSavedMeasurementsActivity.class);
+        startActivity(listSavedMeasurementsActivityIntent);
     }
 }
