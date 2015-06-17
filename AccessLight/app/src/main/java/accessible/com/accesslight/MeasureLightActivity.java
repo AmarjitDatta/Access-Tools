@@ -1,42 +1,49 @@
 package accessible.com.accesslight;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MeasureLightActivity extends ActionBarActivity {
+public class MeasureLightActivity extends Activity {
+    public final static String EXTRA_MESSAGE = "access.light.measureLightActivity.MESSAGE";
+
     ProgressBar lightMeter;
-    TextView textMax, textReading;
     float counter;
     Button read;
     TextView display;
-/*
-    public final static String EXTRA_MESSAGE = "accessible.com.accessibility.light.measureLightActivity.MESSAGE";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measure_light);
-    }
 
+        measureLightIntensity();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_measure_light, menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         if (id == R.id.homeMenuBtn) {
@@ -52,42 +59,15 @@ public class MeasureLightActivity extends ActionBarActivity {
         else if (id == R.id.measureLightMenuBtn) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    public void measureLightLevel(View view) {
-        Intent showLightMeasurementResultIntent = new Intent(this, ShowLightMeasurementResult.class);
-        Bundle bundle = new Bundle();
-
-        try {
-            double noiseLevel = 0.0d;
-            bundle.putDouble(EXTRA_MESSAGE, noiseLevel);
-        }
-        catch (Exception ex) {
-            bundle.putDouble(EXTRA_MESSAGE, 0.0d);
-        }
-
-        showLightMeasurementResultIntent.putExtras(bundle);
-        startActivity(showLightMeasurementResultIntent);
-    }*/
-
-    /**
-     * Called when the activity is first created.
-     */
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_measure_light);
-
+    private void measureLightIntensity() {
         counter = 0;
         read = (Button) findViewById(R.id.bStart);
         display = (TextView) findViewById(R.id.tvDisplay);
 
         lightMeter = (ProgressBar) findViewById(R.id.lightmeter);
-        textMax = (TextView) findViewById(R.id.max);
-        textReading = (TextView) findViewById(R.id.reading);
 
         SensorManager sensorManager
                 = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -99,14 +79,9 @@ public class MeasureLightActivity extends ActionBarActivity {
                     "No Light Sensor! quit-",
                     Toast.LENGTH_LONG).show();
         } else {
-            float max = lightSensor.getMaximumRange();
-            lightMeter.setMax((int) max);
-            textMax.setText("Max Reading(Lux): " + String.valueOf(max));
-
             sensorManager.registerListener(lightSensorEventListener,
                     lightSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
-
         }
     }
 
@@ -115,28 +90,27 @@ public class MeasureLightActivity extends ActionBarActivity {
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            // TODO Auto-generated method stub
-
         }
 
         @Override
         public void onSensorChanged(SensorEvent event) {
-            // TODO Auto-generated method stub
             if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
                 final float currentReading = event.values[0];
                 lightMeter.setProgress((int) currentReading);
-                textReading.setText("Current Reading(Lux): " + String.valueOf(currentReading));
                 read.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
-                        // TODO Auto-generated method stub
-                        display.setText("" + String.valueOf(currentReading));
+                    showMeasuredResult(String.valueOf(currentReading));
                     }
                 });
-
             }
         }
-
     };
+
+    private void showMeasuredResult(String lightValue) {
+        Intent showSoundMeasurementResultIntent = new Intent(this, ShowLightMeasurementResult.class);
+        showSoundMeasurementResultIntent.putExtra(EXTRA_MESSAGE, lightValue);
+        startActivity(showSoundMeasurementResultIntent);
+    }
 }

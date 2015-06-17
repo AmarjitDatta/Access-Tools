@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="accessible.com.accesslight" >
 
-    <uses-feature android:name="android.hardware.sensor.light"/>
+    <uses-feature android:name="android.hardware.sensor.light" />
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -22,15 +23,35 @@
         </activity>
         <activity
             android:name=".ListSavedMeasurementsActivity"
-            android:label="@string/title_activity_list_saved_measurements" >
+            android:label="@string/title_activity_list_saved_measurements"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name=".MainActivity"
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".MeasureLightActivity"
-            android:label="@string/title_activity_measure_light" >
+            android:label="@string/title_activity_measure_light"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name=".MainActivity"
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".ShowLightMeasurementResult"
-            android:label="@string/title_activity_show_light_measurement_result" >
+            android:label="@string/title_activity_show_light_measurement_result"
+            android:parentActivityName=".MeasureLightActivity">
+            <meta-data
+                android:name=".MeasureLightActivity"
+                android:value=".MeasureLightActivity" />
+        </activity>
+        <activity
+            android:name=".LoadOldMeasurement"
+            android:label="@string/title_activity_load_old_measurement"
+            android:parentActivityName=".ListSavedMeasurementsActivity">
+            <meta-data
+                android:name=".ListSavedMeasurementsActivity"
+                android:value=".ListSavedMeasurementsActivity" />
         </activity>
     </application>
 </manifest>
