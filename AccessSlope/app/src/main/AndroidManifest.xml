@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="accessible.com.accessslope">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo">
+        <activity
+            android:name="accessible.com.accessslope.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MeasureSlopeActivity"
+            android:label="@string/title_activity_measure_slope"
+            android:launchMode="singleTop"
+            android:parentActivityName="accessible.com.accessslope.MainActivity">
+            <meta-data
+                android:name=".MainActivity"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="accessible.com.accessslope.ListSavedMeasurementsActivity"
+            android:label="@string/title_activity_list_saved_measurements"
+            android:parentActivityName="accessible.com.accessslope.MainActivity">
+            <meta-data
+                android:name=".MainActivity"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ShowMeasurementResult"
+            android:label="@string/title_activity_show_slope_measurement_result"
+            android:parentActivityName=".MeasureSlopeActivity">
+            <meta-data
+                android:name=".MeasureSlopeActivity"
+                android:value=".MeasureSlopeActivity" />
+        </activity>
+        <activity
+            android:name="accessible.com.accessslope.LoadOldMeasurement"
+            android:label="@string/title_activity_load_old_measurement"
+            android:parentActivityName="accessible.com.accessslope.ListSavedMeasurementsActivity">
+            <meta-data
+                android:name=".ListSavedMeasurementsActivity"
+                android:value=".ListSavedMeasurementsActivity" />
+        </activity>
+    </application>
+
+</manifest>

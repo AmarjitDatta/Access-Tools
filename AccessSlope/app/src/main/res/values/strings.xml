@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Access Slope</string>
+
+    <!--Menu button levels-->
+    <string name="homeMenuBtnLabel">Home</string>
+    <string name="showSavedLogsMenuBtnLabel">Logs</string>
+    <string name="measureSoundMenuBtnLabel">Measure</string>
+
+    <!--Button levels-->
+    <string name="measureSoundButtonLabel">Measure Slope Level</string>
+    <string name="measureButtonLabel">Measure</string>
+    <string name="tryAgainButtonLabel">Try Again</string>
+    <string name="saveResultButton">Save Result</string>
+    <string name="shareResultsButtonLabel">Share</string>
+    <string name="slopeLogsButtonLabel">Saved Logs</string>
+
+    <!--Activity page titles-->
+    <string name="title_activity_measure_slope">Measure Slope</string>
+    <string name="title_activity_list_saved_measurements">Saved Measurements</string>
+    <string name="title_activity_show_slope_measurement_result">Result</string>
+
+    <!--Others-->
+    <string name="slopeMeasurementLogs">Saved Logs</string>
+    <string name="action_settings">Settings</string>
+    <string name="samplingRateLabel">Enter Sampling Rate</string>
+    <string name="title_activity_load_old_measurement">Measurement</string>
+</resources>
