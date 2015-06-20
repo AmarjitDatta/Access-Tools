@@ -31,18 +31,6 @@ public class LoadOldMeasurement extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_load_old_measurement, menu);
-        // Access the Share Item defined in menu XML
-        MenuItem shareItem = menu.findItem(R.id.menu_item_share);
-
-        // Access the object responsible for
-        // putting together the sharing submenu
-        if (shareItem != null) {
-            mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        }
-
-        // Create an Intent to share your content
-        setShareIntent();
-
         return true;
     }
 
@@ -80,7 +68,7 @@ public class LoadOldMeasurement extends Activity {
         TextView oldMeasurementTime = (TextView) findViewById(R.id.oldMeasurementTime);
         oldMeasurementTime.setText("Time: " + timeStamp);
         TextView oldMeasurementValue = (TextView) findViewById(R.id.oldMeasurementValue);
-        oldMeasurementValue.setText("Light Intensity Level: " + intensityLevel + "db");
+        oldMeasurementValue.setText("Light Intensity Level: " + intensityLevel + "Lux");
     }
 
     public void measureDataAgainActivity(View view) {

@@ -1,11 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item
-        android:id="@+id/menu_item_share"
-        android:title="@string/shareResultsButtonLabel"
-        app:showAsAction="ifRoom"
-        app:actionProviderClass= "android.support.v7.widget.ShareActionProvider" />
+
     <item android:id="@+id/homeMenuBtn" android:title="@string/homeMenuBtnLabel"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/showSavedLogsMenuBtn" android:title="@string/showSavedLogsMenuBtnLabel"

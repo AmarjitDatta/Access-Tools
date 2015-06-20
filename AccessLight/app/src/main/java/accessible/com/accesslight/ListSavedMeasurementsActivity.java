@@ -37,17 +37,6 @@ public class ListSavedMeasurementsActivity extends Activity implements View.OnCl
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_list_saved_measurements, menu);
-        // Access the Share Item defined in menu XML
-        MenuItem shareItem = menu.findItem(R.id.menu_item_share);
-
-        // Access the object responsible for
-        // putting together the sharing submenu
-        if (shareItem != null) {
-            mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        }
-
-        // Create an Intent to share your content
-        setShareIntent();
         return true;
     }
 

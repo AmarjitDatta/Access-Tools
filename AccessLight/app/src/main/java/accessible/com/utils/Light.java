@@ -1,11 +1,14 @@
 package accessible.com.utils;
 
+import java.util.Date;
+
 public class Light {
     private String timeStamp;
     private String lightIntensity;
 
     public Light(String lightIntensity) {
         this.lightIntensity = lightIntensity;
+        this.timeStamp = new Date().toString();
     }
 
     public String getTimeStamp() {
