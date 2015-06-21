@@ -9,35 +9,44 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/samplingRateLabel"
-        android:id="@+id/textView"
-        android:layout_above="@+id/editText"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/azimuthLabel"
+        android:id="@+id/azimuth"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="@dimen/abc_text_size_large_material" />
+        android:layout_alignParentStart="true"/>
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_above="@+id/measureRoomSoundLevel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/pitchLabel"
+        android:id="@+id/pitch"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/azimuth"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/rollLabel"
+        android:id="@+id/roll"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/pitch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/measureButtonLabel"
-        android:id="@+id/measureRoomSoundLevel"
-        android:onClick="measureNoise"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="@dimen/abc_text_size_large_material" />
+        android:id="@+id/measureSlopeLevel"
+        android:onClick="measureSlope"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:layout_below="@+id/roll"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="117dp"/>
 
 </RelativeLayout>

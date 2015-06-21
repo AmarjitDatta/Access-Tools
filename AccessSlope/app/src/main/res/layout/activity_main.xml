@@ -17,7 +17,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/measureSoundButtonLabel"
+        android:text="@string/measureSlopeButtonLabel"
         android:id="@+id/measureSound"
         android:onClick="openMeasureSlopeActivity"
         android:layout_above="@+id/relativeLayout"

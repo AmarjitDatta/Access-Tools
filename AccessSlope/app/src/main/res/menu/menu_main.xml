@@ -10,6 +10,6 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/showSavedLogsMenuBtn" android:title="@string/showSavedLogsMenuBtnLabel"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/measureSoundMenuBtn" android:title="@string/measureSoundMenuBtnLabel"
+    <item android:id="@+id/measureSoundMenuBtn" android:title="@string/measureSlopeMenuBtnLabel"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

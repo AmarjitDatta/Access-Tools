@@ -20,41 +20,41 @@ import accessible.com.accessslope.R;
 public class DataAdapter extends BaseAdapter {
     Context mContext;
     LayoutInflater mInflater;
-    private static List<Noise> noiseArrayList;
+    private static List<Slope> resultArrayList;
     private static final String PREFS = "slopePref";
     private static final String PREF_NAME = "slopeLogList";
 
     public DataAdapter(Context context, LayoutInflater inflater) {
         mContext = context;
         mInflater = inflater;
-        noiseArrayList = new ArrayList<>();
+        resultArrayList = new ArrayList<>();
 
         SharedPreferences mSharedPreferences = mContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = mSharedPreferences.getString(PREF_NAME, "");
-        Type collectionType = new TypeToken<List<Noise>>(){}.getType();
-        List<Noise> obj = gson.fromJson(json, collectionType);
+        Type collectionType = new TypeToken<List<Slope>>(){}.getType();
+        List<Slope> obj = gson.fromJson(json, collectionType);
 
         if (obj != null) {
             int startIndex = obj.size() - 1;
             for (int i = startIndex; i>=0; i--) {
-                noiseArrayList.add((Noise)obj.get(i));
+                resultArrayList.add((Slope)obj.get(i));
             }
             /*for (Object item : obj.toArray()) {
-                noiseArrayList.add((Noise)item);
+                resultArrayList.add((Slope)item);
             }*/
         }
     }
 
     @Override
     public int getCount() {
-        int size = noiseArrayList.size();
+        int size = resultArrayList.size();
         return size;
     }
 
     @Override
-    public Noise getItem(int position) {
-        return noiseArrayList.get(position);
+    public Slope getItem(int position) {
+        return resultArrayList.get(position);
     }
 
     @Override
@@ -67,37 +67,40 @@ public class DataAdapter extends BaseAdapter {
         ViewHolder holder;
 
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.noise_log_layout, null);
+            convertView = mInflater.inflate(R.layout.slope_log_layout, null);
 
             holder = new ViewHolder();
             holder.timeStampTextBox = (TextView) convertView.findViewById(R.id.timeStampTextBox);
-            holder.originalValueTextBox = (TextView) convertView.findViewById(R.id.originalValueTextBox);
-            holder.roundedValueTextBox = (TextView) convertView.findViewById(R.id.roundedValueTextBox);
+            holder.azimuthValueTextBox = (TextView) convertView.findViewById(R.id.azimuthValueTextBox);
+            holder.pitchValueTextBox = (TextView) convertView.findViewById(R.id.pitchValueTextBox);
+            holder.rollValueTextBox = (TextView) convertView.findViewById(R.id.rollValueTextBox);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Noise noise = getItem(position);
+        Slope slope = getItem(position);
 
-        if (noise != null) {
-            holder.timeStampTextBox.setText("Time stamp: " + noise.getTimeStamp());
-            holder.originalValueTextBox.setText("Original value: " + noise.getOriginalNoise());
-            holder.roundedValueTextBox.setText("Rounded value: " + noise.getRoundedNoise());
+        if (slope != null) {
+            holder.timeStampTextBox.setText("Time stamp: " + slope.getTimeStamp());
+            holder.azimuthValueTextBox.setText("Azimuth: " + slope.getAzimuth());
+            holder.pitchValueTextBox.setText("Pitch: " + slope.getPitch());
+            holder.rollValueTextBox.setText("Roll: " + slope.getRoll());
         }
 
         return convertView;
     }
 
-    public void updateList(List<Noise> pNoiseArrayList) {
-        noiseArrayList = pNoiseArrayList;
+    public void updateList(List<Slope> pResultArrayList) {
+        resultArrayList = pResultArrayList;
         notifyDataSetChanged();
     }
 
     private static class ViewHolder {
         public TextView timeStampTextBox;
-        public TextView originalValueTextBox;
-        public TextView roundedValueTextBox;
+        public TextView azimuthValueTextBox;
+        public TextView pitchValueTextBox;
+        public TextView rollValueTextBox;
     }
 }

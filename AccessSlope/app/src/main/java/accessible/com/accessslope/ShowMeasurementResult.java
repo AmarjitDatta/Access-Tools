@@ -21,20 +21,21 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import accessible.com.accessslope.utils.Noise;
+import accessible.com.accessslope.utils.Constants;
+import accessible.com.accessslope.utils.Slope;
 
 public class ShowMeasurementResult extends Activity {
     Intent mMeasureSlopeActivityIntent;
     private static final String PREFS = "slopePref";
     private static final String PREF_NAME = "slopeLogList";
     private SharedPreferences mSharedPreferences;
-    Noise mNoise;
+    Slope mSlope;
     ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_slope_measurement_result);
+        setContentView(R.layout.activity_show_measurement_result);
         mMeasureSlopeActivityIntent = getIntent();
         showResultInTextField();
     }
@@ -86,12 +87,20 @@ public class ShowMeasurementResult extends Activity {
 
     public void showResultInTextField() {
         Bundle bundle = mMeasureSlopeActivityIntent.getExtras();
-        if (mNoise != null) {
-            mNoise = null;
+        if (mSlope != null) {
+            mSlope = null;
         }
-        mNoise = new Noise(bundle.getDouble(MeasureSlopeActivity.EXTRA_MESSAGE));
-        TextView resultSoundTextField = (TextView) findViewById(R.id.resultSoundTextField);
-        resultSoundTextField.setText("Noise Level: " + mNoise.getRoundedNoise() + "db");
+        double azimuth = bundle.getDouble(Constants.EXTRA_MESSAGE_AZIMUTH);
+        double pitch = bundle.getDouble(Constants.EXTRA_MESSAGE_PITCH);
+        double roll = bundle.getDouble(Constants.EXTRA_MESSAGE_ROLL);
+
+        mSlope = new Slope(azimuth, pitch, roll);
+        TextView resultAzimuthTextField = (TextView) findViewById(R.id.resultAzimuthTextField);
+        TextView resultPitchTextField = (TextView) findViewById(R.id.resultPitchTextField);
+        TextView resultRollTextField = (TextView) findViewById(R.id.resultRollTextField);
+        resultAzimuthTextField.setText("Azimuth: " + mSlope.getAzimuth() + " Degree");
+        resultPitchTextField.setText("Pitch: " + mSlope.getPitch() + " Degree");
+        resultRollTextField.setText("Roll: " + mSlope.getRoll() + " Degree");
     }
 
     public void openParentActivity(View view) {
@@ -104,21 +113,21 @@ public class ShowMeasurementResult extends Activity {
 
         Gson gson = new Gson();
         String json = mSharedPreferences.getString(PREF_NAME, "");
-        Type collectionType = new TypeToken<List<Noise>>(){}.getType();
-        List<Noise> obj = gson.fromJson(json, collectionType);
+        Type collectionType = new TypeToken<List<Slope>>(){}.getType();
+        List<Slope> obj = gson.fromJson(json, collectionType);
 
         SharedPreferences.Editor prefsEditor = mSharedPreferences.edit();
 
         /*First check if the List array is null. If null, need to initialize a new list
         * Else, we will add in the existing list*/
         if (obj == null) {
-            List<Noise> noiseList = new ArrayList<>();
-            noiseList.add(mNoise);
+            List<Slope> noiseList = new ArrayList<>();
+            noiseList.add(mSlope);
             String jsonEntry = gson.toJson(noiseList);
             prefsEditor.putString(PREF_NAME, jsonEntry);
         }
         else {
-            obj.add(mNoise);
+            obj.add(mSlope);
             String jsonEntry = gson.toJson(obj);
             prefsEditor.putString(PREF_NAME, jsonEntry);
         }
@@ -126,7 +135,7 @@ public class ShowMeasurementResult extends Activity {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Success!");
-        alert.setMessage("Noise log successfully saved");
+        alert.setMessage("Slope log successfully saved");
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -137,14 +146,14 @@ public class ShowMeasurementResult extends Activity {
         /*Disable save button after successfully saving data*/
         view.setEnabled(false);
 
-        Log.d("Save Result", "Finished Saving the Noise Object");
+        Log.d("Save Result", "Finished Saving the Slope Object");
     }
 
     public void shareResultsAction(View view) {
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Accessibility Sound");
-        String shareMessage = String.format("Sound level of the room is %sdb at %s time",mNoise.getRoundedNoise(),mNoise.getTimeStamp());
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Access Slope");
+        String shareMessage = String.format("Slope level of the plain is %s at %s time",mSlope.getAzimuth(),mSlope.getTimeStamp());
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
         startActivity(Intent.createChooser(sharingIntent, "Share"));
     }
@@ -154,9 +163,9 @@ public class ShowMeasurementResult extends Activity {
             // create an Intent with the contents of the TextView
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Accessibility Sound");
-            if (mNoise != null) {
-                String shareMessage = String.format("Sound level of the room is %sdb at %s time",mNoise.getRoundedNoise(),mNoise.getTimeStamp());
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Access Slope");
+            if (mSlope != null) {
+                String shareMessage = String.format("Slope level of the plain is %s at %s time",mSlope.getAzimuth(),mSlope.getTimeStamp());
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             }
 

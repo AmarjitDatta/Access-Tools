@@ -77,8 +77,8 @@ public class MainActivity extends Activity {
             // create an Intent with the contents of the TextView
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Accessibility Sound");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Measure room slope level with Accessibility slope app.");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Access Slope");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Measure room slope level with Access slope app.");
 
             // Make sure the provider knows
             // it should work with that Intent

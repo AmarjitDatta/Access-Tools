@@ -6,87 +6,85 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="accessible.com.accessslope.LoadOldMeasurement">
+                tools:context="accessible.com.accessslope.ShowMeasurementResult">
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/scrollView">
+        android:layout_height="fill_parent">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/oldMeasurementTime"
+                android:id="@+id/resultAzimuthTextField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:text="Time"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-            <TextView
-                android:id="@+id/oldMeasurementAzimuth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/oldMeasurementTime"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
                 android:text="Azimuth"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <TextView
-                android:id="@+id/oldMeasurementPitch"
+                android:id="@+id/resultPitchTextField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/oldMeasurementAzimuth"
-                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/resultAzimuthTextField"
                 android:layout_marginTop="20dp"
                 android:text="Pitch"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
             <TextView
-                android:id="@+id/oldMeasurementRoll"
+                android:id="@+id/resultRollTextField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/oldMeasurementPitch"
-                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/resultPitchTextField"
                 android:layout_marginTop="20dp"
                 android:text="Roll"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
+            <Button
+                android:id="@+id/saveResultButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/resultRollTextField"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="71dp"
+                android:onClick="saveResult"
+                android:text="@string/saveResultButton"
+                android:textSize="@dimen/abc_text_size_large_material"/>
+
+            <Button
+                android:id="@+id/tryAgainButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/saveResultButton"
+                android:layout_marginTop="40dp"
+                android:onClick="openParentActivity"
+                android:text="@string/tryAgainButtonLabel"
+                android:textSize="@dimen/abc_text_size_large_material"/>
+
+            <Button
+                android:id="@+id/shareResultsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/saveResultButton"
+                android:layout_marginTop="40dp"
+                android:onClick="shareResultsAction"
+                android:text="@string/shareResultsButtonLabel"
+                android:textSize="@dimen/abc_text_size_large_material"/>
+
         </RelativeLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/oldResultTryAgainButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="measureDataAgainActivity"
-        android:text="@string/tryAgainButtonLabel"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"/>
 
-    <Button
-        android:id="@+id/shareResultsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="shareOldResultsAction"
-        android:text="@string/shareResultsButtonLabel"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:layout_alignTop="@+id/oldResultTryAgainButton"
-        android:layout_alignRight="@+id/scrollView"
-        android:layout_alignEnd="@+id/scrollView"/>
 </RelativeLayout>

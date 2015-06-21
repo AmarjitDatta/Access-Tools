@@ -11,16 +11,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import accessible.com.accessslope.utils.Constants;
 import accessible.com.accessslope.utils.DataAdapter;
-import accessible.com.accessslope.utils.Noise;
+import accessible.com.accessslope.utils.Slope;
 
 
 public class ListSavedMeasurementsActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
     ShareActionProvider mShareActionProvider;
     ListView mListView;
     DataAdapter mDataAdapter;
-    public final static String EXTRA_MESSAGE_TIMESTAMP = "accessible.com.accessibility.slope.measureSlopeActivity.MESSAGE.timestamp";
-    public final static String EXTRA_MESSAGE_SOUND_LEVEL = "accessible.com.accessibility.slope.measureSlopeActivity.MESSAGE.slopeLevel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,18 +95,20 @@ public class ListSavedMeasurementsActivity extends Activity implements View.OnCl
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Noise selectedNoiseItem = mDataAdapter.getItem(position);
+        Slope selectedSlopeItem = mDataAdapter.getItem(position);
 
-        if (selectedNoiseItem != null) {
+        if (selectedSlopeItem != null) {
             Intent loadOldMeasurementIntent = new Intent(this, LoadOldMeasurement.class);
 
-            /*Pass noise level*/
+            /*Pass slope level*/
             Bundle bundle = new Bundle();
-            bundle.putDouble(EXTRA_MESSAGE_SOUND_LEVEL, selectedNoiseItem.getOriginalNoise());
+            bundle.putDouble(Constants.EXTRA_MESSAGE_AZIMUTH, selectedSlopeItem.getAzimuth());
+            bundle.putDouble(Constants.EXTRA_MESSAGE_PITCH, selectedSlopeItem.getPitch());
+            bundle.putDouble(Constants.EXTRA_MESSAGE_ROLL, selectedSlopeItem.getRoll());
             loadOldMeasurementIntent.putExtras(bundle);
 
             /*Pass time stamp*/
-            loadOldMeasurementIntent.putExtra(EXTRA_MESSAGE_TIMESTAMP, selectedNoiseItem.getTimeStamp());
+            loadOldMeasurementIntent.putExtra(Constants.EXTRA_MESSAGE_TIMESTAMP, selectedSlopeItem.getTimeStamp());
 
             startActivity(loadOldMeasurementIntent);
         }

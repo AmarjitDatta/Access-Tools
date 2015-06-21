@@ -1,18 +1,23 @@
 <resources>
     <string name="app_name">Access Slope</string>
 
-    <!--Menu button levels-->
+    <!--Menu button labels-->
     <string name="homeMenuBtnLabel">Home</string>
     <string name="showSavedLogsMenuBtnLabel">Logs</string>
-    <string name="measureSoundMenuBtnLabel">Measure</string>
+    <string name="measureSlopeMenuBtnLabel">Measure</string>
 
-    <!--Button levels-->
-    <string name="measureSoundButtonLabel">Measure Slope Level</string>
+    <!--Button labels-->
+    <string name="measureSlopeButtonLabel">Measure Slope Level</string>
     <string name="measureButtonLabel">Measure</string>
     <string name="tryAgainButtonLabel">Try Again</string>
     <string name="saveResultButton">Save Result</string>
     <string name="shareResultsButtonLabel">Share</string>
     <string name="slopeLogsButtonLabel">Saved Logs</string>
+
+    <!--Text field labels-->
+    <string name="azimuthLabel">Azimuth</string>
+    <string name="pitchLabel">Pitch</string>
+    <string name="rollLabel">Roll</string>
 
     <!--Activity page titles-->
     <string name="title_activity_measure_slope">Measure Slope</string>

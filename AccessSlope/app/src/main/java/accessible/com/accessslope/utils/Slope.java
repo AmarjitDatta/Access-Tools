@@ -3,30 +3,40 @@ package accessible.com.accessslope.utils;
 import java.util.Date;
 
 public class Slope {
-    private double originalSlope;
-    private double roundedSlope;
+    private double azimuth;
+    private double pitch;
+    private double roll;
     private String timeStamp;
 
-    public Slope(double pOriginalSlope) {
-        this.originalSlope = pOriginalSlope;
+    public Slope(double azimuth, double pitch, double roll) {
+        this.azimuth = azimuth;
+        this.pitch = pitch;
+        this.roll = roll;
         this.timeStamp = new Date().toString();
-        this.roundedSlope = UtilityFunctions.round(pOriginalSlope, 2);
     }
 
-    public double getOriginalSlope() {
-        return originalSlope;
+    public double getAzimuth() {
+        return azimuth;
     }
 
-    public void setOriginalSlope(double originalSlope) {
-        this.originalSlope = originalSlope;
+    public void setAzimuth(double azimuth) {
+        this.azimuth = azimuth;
     }
 
-    public double getRoundedSlope() {
-        return roundedSlope;
+    public double getPitch() {
+        return pitch;
     }
 
-    public void setRoundedSlope(double roundedSlope) {
-        this.roundedSlope = roundedSlope;
+    public void setPitch(double pitch) {
+        this.pitch = pitch;
+    }
+
+    public double getRoll() {
+        return roll;
+    }
+
+    public void setRoll(double roll) {
+        this.roll = roll;
     }
 
     public String getTimeStamp() {
