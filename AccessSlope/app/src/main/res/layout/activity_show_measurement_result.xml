@@ -24,7 +24,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:text="Azimuth"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/resultPitchTextField"
@@ -35,7 +36,8 @@
                 android:layout_below="@+id/resultAzimuthTextField"
                 android:layout_marginTop="20dp"
                 android:text="Pitch"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/resultRollTextField"
@@ -46,7 +48,8 @@
                 android:layout_below="@+id/resultPitchTextField"
                 android:layout_marginTop="20dp"
                 android:text="Roll"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/saveResultButton"

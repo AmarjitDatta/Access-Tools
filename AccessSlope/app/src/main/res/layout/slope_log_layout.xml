@@ -9,7 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="3sp"
-        android:textSize="@dimen/abc_text_size_medium_material" />
+        android:textSize="@dimen/abc_text_size_medium_material"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/azimuthValueTextBox"
@@ -19,7 +20,8 @@
         android:layout_below="@+id/timeStampTextBox"
         android:layout_alignLeft="@+id/timeStampTextBox"
         android:paddingBottom="3sp"
-        android:textSize="@dimen/abc_text_size_medium_material" />
+        android:textSize="@dimen/abc_text_size_medium_material"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/pitchValueTextBox"
@@ -29,7 +31,8 @@
         android:layout_below="@+id/azimuthValueTextBox"
         android:layout_alignLeft="@+id/azimuthValueTextBox"
         android:paddingBottom="3sp"
-        android:textSize="@dimen/abc_text_size_medium_material" />
+        android:textSize="@dimen/abc_text_size_medium_material"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/rollValueTextBox"
@@ -39,6 +42,7 @@
         android:layout_below="@+id/pitchValueTextBox"
         android:layout_alignLeft="@+id/pitchValueTextBox"
         android:paddingBottom="3sp"
-        android:textSize="@dimen/abc_text_size_medium_material" />
+        android:textSize="@dimen/abc_text_size_medium_material"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

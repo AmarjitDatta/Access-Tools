@@ -176,9 +176,9 @@ public class MeasureSlopeActivity extends Activity {
         Bundle bundle = new Bundle();
 
         try {
-            double azimuth = Double.valueOf(String.valueOf(mAngle0_azimuth));
-            double pitch = Double.valueOf(String.valueOf(mAngle1_pitch));
-            double roll = Double.valueOf(String.valueOf(mAngle2_roll));
+            double azimuth = Double.valueOf(String.valueOf(mAngle0_filtered_azimuth));
+            double pitch = Double.valueOf(String.valueOf(mAngle1_filtered_pitch));
+            double roll = Double.valueOf(String.valueOf(mAngle2_filtered_roll));
             bundle.putDouble(Constants.EXTRA_MESSAGE_AZIMUTH, azimuth);
             bundle.putDouble(Constants.EXTRA_MESSAGE_PITCH, pitch);
             bundle.putDouble(Constants.EXTRA_MESSAGE_ROLL, roll);
@@ -194,8 +194,8 @@ public class MeasureSlopeActivity extends Activity {
     }
 
     private void update() {
-        mAzimuth.setText("Azimuth: " + String.valueOf(mAngle0_azimuth));
-        mPitch.setText("Pitch: " + String.valueOf(mAngle1_pitch));
-        mRoll.setText("Roll: " + String.valueOf(mAngle2_roll));
+        mAzimuth.setText("Azimuth: " + String.valueOf(mAngle0_filtered_azimuth));
+        mPitch.setText("Pitch: " + String.valueOf(mAngle1_filtered_pitch));
+        mRoll.setText("Roll: " + String.valueOf(mAngle2_filtered_roll));
     }
 }
